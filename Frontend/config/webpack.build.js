@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 const PUBLIC_PATH = path.resolve(__dirname, '../../public/src/');
 
@@ -64,7 +65,7 @@ module.exports = {
             },
         ],
     },
-    resolve: { extensions: ['*', '.js', '.jsx', '.ts', '.tsx', 'scss'], modules: ['node_modules'] },
+    resolve: { extensions: ['*', '.js', '.vue'], modules: ['node_modules'] },
     output: {
         path: PUBLIC_PATH,
         publicPath: '/',
@@ -72,6 +73,7 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
+        new VuetifyLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename     : 'build.css',
         }),
